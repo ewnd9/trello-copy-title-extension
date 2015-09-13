@@ -1,0 +1,16 @@
+{
+  "name": "trello-copy-title-extension",
+  "version": "0.0.0",
+  "description": "trello-copy-title-extension",
+  "main": "index.js",
+  "scripts": {},
+  "preferGlobal": "false",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewnd9/trello-copy-title-extension.git"
+  },
+  "author": "ewnd9 <ewndnine@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
