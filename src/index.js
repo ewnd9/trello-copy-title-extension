@@ -9,7 +9,7 @@ document.addEventListener("mousedown", function(event) {
 
 chrome.runtime.onMessage.addListener(function(request, options, sendResponse) {
   if (request.type === 'menu-click') {
-    var text = clickedEl.innerText;
+    var text = clickedEl.innerText.replace(/"/g, '\\\"');
     var match = idRegex.exec(clickedEl.href);
     var id = match[1];
 
