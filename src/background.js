@@ -7,6 +7,9 @@ chrome.runtime.onInstalled.addListener(function() {
     'id': 'context' + context,
     'documentUrlPatterns': ['*://trello.com/*']
   });
+
+  chrome.tabs.create({ url: 'options.html' }, function (tab) {
+  });
 });
 
 function onClickHandler(info, tab) {

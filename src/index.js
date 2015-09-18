@@ -12,23 +12,28 @@ chrome.runtime.onMessage.addListener(function(request, options, sendResponse) {
     var text = clickedEl.innerText;
     var match = idRegex.exec(clickedEl.href);
     var id = match[1];
-    var result = 'trello#' + id + ' ' + text;
 
-    var copyFrom = document.createElement('textarea');
-    copyFrom.textContent = result;
-    document.body.appendChild(copyFrom);
-    copyFrom.focus();
-    document.execCommand('SelectAll');
+    chrome.storage.sync.get({
+      template: 'trello#${id} ${title}'
+    }, function(items) {
+      var result = items.template.replace('${id}', id).replace('${title}', text);
 
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copy email command was ' + msg);
-    } catch(err) {
-      console.log('Oops, unable to copy');
-    }
+      var copyFrom = document.createElement('textarea');
+      copyFrom.textContent = result;
+      document.body.appendChild(copyFrom);
+      copyFrom.focus();
+      document.execCommand('SelectAll');
 
-    document.body.removeChild(copyFrom);
-    alert('"' + result + '" in clipboard');
+      try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copy email command was ' + msg);
+      } catch(err) {
+        console.log('Oops, unable to copy');
+      }
+
+      document.body.removeChild(copyFrom);
+      alert('"' + result + '" in clipboard');
+    });
   }
 });

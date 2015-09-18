@@ -4,7 +4,8 @@
   "manifest_version": 2,
   "permissions": [
     "contextMenus",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "content_scripts": [{
     "matches": ["*://trello.com/*"],
@@ -13,5 +14,6 @@
   "background": {
     "persistent": false,
     "scripts": [ "background.js" ]
-  }
+  },
+  "options_page": "options.html"
 }
