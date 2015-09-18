@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "permissions": [
-    "tabs",
-    "*://*/*"
+    "contextMenus",
+    "tabs"
   ],
   "content_scripts": [{
-    "matches": ["http://trello.com/*", "https://trello.com/*"],
+    "matches": ["*://trello.com/*"],
     "js": ["index.js"]
   }],
   "background": {
+    "persistent": false,
     "scripts": [ "background.js" ]
   }
 }
